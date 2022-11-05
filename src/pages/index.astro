@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/general/Card.astro'
+import Car from '../components/icons/Car.astro'
+import Version from '../components/icons/Version.astro'
+import TimelineCard from '../components/general/TimelineCard.astro'
+import FeatureList from '../components/general/FeatureList.astro'
+import Link from '../components/shared/Link.astro'
+import Updates from '../bd/updates.json'
+
+let title = 'Release Notes'
+
+---
+
+<Layout title={title}>
+    <div class="max-w-screen-lg min-h-full mx-auto flex md:items-center px-6 p-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <section>
+                <h1 class="font-bold leading-tight text-3xl md:text-4xl">
+                    Release note <br>
+                    <span class="text-4xl md:text-5xl">Ideas Studio</span>
+                </h1>
+                <p class="text-base leading-relaxed mt-4">Lorem ipsum dolor sit amet. Nam voluptas culpa et consequatur commodi cum rerum odio At nesciunt consectetur ad soluta facere est quae doloribus.</p>
+                <div class="pt-12 space-y-10">
+                    <Card title="Marketplace" description="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." href="/features">
+                        <Car className="shrink-0" />
+                    </Card>
+                    <Card title="Services" description="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." href="/features">
+                        <Version className="shrink-0" />
+                    </Card>
+                </div>
+            </section>
+            <section>
+                <h2 class="font-bold text-xl leading-snug mb-6 text-gray-900">Últimas características</h2>
+                { Updates.slice(0, 1).map(({features, repository, version}) => (
+                    <TimelineCard name={repository} version={version}>
+                        { features.map(({title, feature}) => (
+                            <FeatureList title={title} features={feature} />
+                        )) }
+                    </TimelineCard>
+                )) }
+                <div class="mt-9 text-right">
+                    <Link href='/features' position="right">
+                        <span>Ver todas las actualizaciones</span>
+                    </Link>
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+

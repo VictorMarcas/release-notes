@@ -1,0 +1,16 @@
+---
+import ThinArrowRight from '../icons/ThinArrowRight.astro';
+import ThinArrowLeft from '../icons/ThinArrowLeft.astro';
+export interface Props {
+	href: string,
+    position: string,
+}
+
+const { href, position } = Astro.props
+---
+
+<a href={href} class="inline-flex gap-1 text-blue-500 leading-6 text-sm items-center font-bold">
+    {position === 'left' && <ThinArrowLeft />}
+    <slot></slot>
+    {position === 'right' && <ThinArrowRight />}
+</a>

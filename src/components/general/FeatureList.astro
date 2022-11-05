@@ -1,0 +1,19 @@
+---
+export interface Props {
+	title: string,
+    features: string[],
+}
+
+const { title, features } = Astro.props;
+---
+
+<div>
+    <h3 class="font-bold text-lg leading-snug text-gray-900">{ title }</h3>
+    <ul class="space-y-3 mt-3">
+        { features.map((feature) => (
+            <li class="before:content-[''] text-gray-600 pl-3.5 before:absolute before:rounded-full before:w-1.5 before:h-1.5 before:border before:border-gray-900 before:bg-blue-instance before:left-0 before:top-1.5 before:mt-px leading-snug text-sm relative">
+                { feature }
+            </li>
+        )) }
+    </ul>
+</div>

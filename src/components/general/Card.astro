@@ -1,0 +1,21 @@
+---
+import Link from '../shared/Link.astro'
+export interface Props {
+	href: string,
+    title: string,
+    description: string,
+}
+
+const { href, title, description } = Astro.props
+---
+
+<article class="flex items-start gap-2">
+    <slot></slot>
+    <div>
+        <h3 class="font-bold text-lg md:text-xl leading-tight text-gray-900">{title}</h3>
+        <p class="text-sm md:text-base leading-relaxed text-gray-700">{description}</p>
+        <Link href={href} position="right">
+            <span>Ver todas las actualizaciones</span>
+        </Link>
+    </div>
+</article>
